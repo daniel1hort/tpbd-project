@@ -1,0 +1,16 @@
+﻿CREATE TABLE [dbo].[Salary]
+(
+	[Id] UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+	[EmployeeId] INT NOT NULL FOREIGN KEY REFERENCES [Employee]([Id]),
+	[EmitedAt] DATE DEFAULT GETDATE(),
+	[ForMonth] DATE NOT NULL,
+
+	[TotalGrossSalary] MONEY NOT NULL,
+	[TotalTaxableSalary] MONEY NOT NULL,
+	[Tax] MONEY NOT NULL,
+	[CAS] MONEY NOT NULL,
+	[CASS] MONEY NOT NULL,
+	[NetSalary] MONEY NOT NULL,
+
+	CONSTRAINT [U_EmployeeMonth] UNIQUE([EmployeeId], [ForMonth]),
+)

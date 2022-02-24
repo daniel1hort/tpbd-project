@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Constant]
+(
+	[Id] INT NOT NULL PRIMARY KEY,
+	[Name] VARCHAR(20) NOT NULL,
+	[Value] FLOAT NOT NULL,
+)
