@@ -1,4 +1,6 @@
-﻿namespace DoNotBuyThisApp.Wizard
+﻿using System.Windows.Forms;
+
+namespace DoNotBuyThisApp.Wizard
 {
     partial class Form1
     {
@@ -106,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 709);
+            this.ClientSize = new System.Drawing.Size(1242, 1055);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pictureBox1);
@@ -114,6 +116,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.listEmployees);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Nu cumparati aplicatia asta!";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
