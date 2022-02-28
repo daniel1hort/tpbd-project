@@ -13,8 +13,6 @@ namespace DoNotBuyThisApp.Wizard
         private Employee LastSelectedEmployee { get; set; }
         private Employee SelectedEmployee { get; set; }
 
-        //private ReportViewer reportViewer;
-
         public Form1()
         {
             InitializeComponent();
@@ -24,11 +22,6 @@ namespace DoNotBuyThisApp.Wizard
             btnSave.Click += BtnSave_Click;
             btnAdd.Click += BtnAdd_Click;
             btnDelete.Click += BtnDelete_Click;
-
-            //reportViewer = new ReportViewer();
-            //reportViewer.Height = 100;
-            //reportViewer.Dock = DockStyle.Bottom;
-            //Controls.Add(reportViewer);
         }
 
         private void BtnDelete_Click(object? sender, EventArgs e)
