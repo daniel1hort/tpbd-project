@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using DoNotBuyThisApp.Data.Models;
+
+#nullable disable
 
 namespace DoNotBuyThisApp.Data
 {
@@ -19,6 +20,7 @@ namespace DoNotBuyThisApp.Data
 
         public virtual DbSet<Constant> Constants { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<EmployeeSalary> EmployeeSalaries { get; set; }
         public virtual DbSet<Salary> Salaries { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -32,6 +34,8 @@ namespace DoNotBuyThisApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
             modelBuilder.Entity<Constant>(entity =>
             {
                 entity.ToTable("Constant");
@@ -77,6 +81,54 @@ namespace DoNotBuyThisApp.Data
                     .IsUnicode(false);
 
                 entity.Property(e => e.PayRise).HasDefaultValueSql("((1))");
+            });
+
+            modelBuilder.Entity<EmployeeSalary>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("EmployeeSalaries");
+
+                entity.Property(e => e.BonusGrossSalary).HasColumnType("money");
+
+                entity.Property(e => e.Cas)
+                    .HasColumnType("money")
+                    .HasColumnName("CAS");
+
+                entity.Property(e => e.Cass)
+                    .HasColumnType("money")
+                    .HasColumnName("CASS");
+
+                entity.Property(e => e.Deductions).HasColumnType("money");
+
+                entity.Property(e => e.EmitedAt).HasColumnType("date");
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ForMonth).HasColumnType("date");
+
+                entity.Property(e => e.GrossSalary).HasColumnType("money");
+
+                entity.Property(e => e.JobTitle)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.NetSalary).HasColumnType("money");
+
+                entity.Property(e => e.Tax).HasColumnType("money");
+
+                entity.Property(e => e.TotalGrossSalary).HasColumnType("money");
+
+                entity.Property(e => e.TotalTaxableSalary).HasColumnType("money");
             });
 
             modelBuilder.Entity<Salary>(entity =>

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.14" />
     <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.15" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.15" />
   </ItemGroup>

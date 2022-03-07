@@ -33,10 +33,12 @@ namespace DoNotBuyThisApp.Wizard
             this.listEmployees = new System.Windows.Forms.ListBox();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.btnSave = new System.Windows.Forms.Button();
-            this.textError = new System.Windows.Forms.TextBox();
+            this.textInfo = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnReports = new System.Windows.Forms.Button();
+            this.btnGen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,16 +67,16 @@ namespace DoNotBuyThisApp.Wizard
             this.btnSave.Text = "Salveaza";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // textError
+            // textInfo
             // 
-            this.textError.Enabled = false;
-            this.textError.Location = new System.Drawing.Point(423, 465);
-            this.textError.Multiline = true;
-            this.textError.Name = "textError";
-            this.textError.ReadOnly = true;
-            this.textError.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textError.Size = new System.Drawing.Size(474, 231);
-            this.textError.TabIndex = 3;
+            this.textInfo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.textInfo.Location = new System.Drawing.Point(423, 465);
+            this.textInfo.Multiline = true;
+            this.textInfo.Name = "textInfo";
+            this.textInfo.ReadOnly = true;
+            this.textInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textInfo.Size = new System.Drawing.Size(474, 231);
+            this.textInfo.TabIndex = 3;
             // 
             // pictureBox1
             // 
@@ -104,15 +106,35 @@ namespace DoNotBuyThisApp.Wizard
             this.btnDelete.Text = "Sterge angajat";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
+            // btnReports
+            // 
+            this.btnReports.Location = new System.Drawing.Point(903, 253);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(327, 50);
+            this.btnReports.TabIndex = 7;
+            this.btnReports.Text = "Rapoarte";
+            this.btnReports.UseVisualStyleBackColor = true;
+            // 
+            // btnGen
+            // 
+            this.btnGen.Location = new System.Drawing.Point(903, 309);
+            this.btnGen.Name = "btnGen";
+            this.btnGen.Size = new System.Drawing.Size(327, 50);
+            this.btnGen.TabIndex = 8;
+            this.btnGen.Text = "Genereaza salarii";
+            this.btnGen.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1242, 704);
+            this.Controls.Add(this.btnGen);
+            this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textError);
+            this.Controls.Add(this.textInfo);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.listEmployees);
@@ -130,9 +152,11 @@ namespace DoNotBuyThisApp.Wizard
         private ListBox listEmployees;
         private PropertyGrid propertyGrid1;
         private Button btnSave;
-        private TextBox textError;
+        private TextBox textInfo;
         private PictureBox pictureBox1;
         private Button btnAdd;
         private Button btnDelete;
+        private Button btnReports;
+        private Button btnGen;
     }
 }

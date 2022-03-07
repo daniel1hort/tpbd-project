@@ -53,7 +53,7 @@ namespace DoNotBuyThisApp.Data.Models
         [NotMapped]
         [Category("Informatii salariale")]
         [DisplayName("Spor"), Description("Marire de salar")]
-        public int PayRiseDisplay { get => (int)((PayRise - 1) * 100); set => PayRise = value / 99.999999 + 1; }
+        public int PayRiseDisplay { get => (int)Math.Ceiling(((decimal)PayRise - 1.0M) * 100.0M); set => PayRise = value / 100.0 + 1.0; }
 
         [NotMapped]
         [ReadOnly(true)]

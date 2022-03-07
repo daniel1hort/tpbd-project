@@ -62,6 +62,7 @@
     <Build Include="Salary.sql" />
     <Build Include="Constant.sql" />
     <Build Include="CreateSalaries.sql" />
+    <Build Include="EmployeeSalaries.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.Seed.sql" />

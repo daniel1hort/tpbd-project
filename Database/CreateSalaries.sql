@@ -23,13 +23,20 @@ AS
 		[TotalGrossSalary] * (1 - [CAS] - [CASS]) * (1 - [Tax])
 	FROM(
 		SELECT
-			*,
+			[Id],
 			CAST([GrossSalary] AS FLOAT) * [PayRise] + CAST([BonusGrossSalary] AS FLOAT) AS [TotalGrossSalary],
 			(SELECT [Value] FROM [Constant] WHERE [Id] = 1) AS [Tax],
 			(SELECT [Value] FROM [Constant] WHERE [Id] = 2) AS [CAS],
 			(SELECT [Value] FROM [Constant] WHERE [Id] = 3) AS [CASS]
 		FROM
 			[dbo].[Employee]
+		WHERE
+			(SELECT Salary.[Id] 
+			 FROM Salary 
+			 WHERE EmployeeId = [Employee].[Id]
+			 AND YEAR(Salary.ForMonth) = YEAR(@lastMonthDate)
+			 AND MONTH(Salary.ForMonth) = MONTH(@lastMonthDate)) 
+			IS NULL
 	) T;
 
 RETURN @@ROWCOUNT;
