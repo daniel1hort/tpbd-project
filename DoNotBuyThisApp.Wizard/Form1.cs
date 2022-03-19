@@ -14,6 +14,8 @@ namespace DoNotBuyThisApp.Wizard
     {
         private Employee LastSelectedEmployee { get; set; }
         private Employee SelectedEmployee { get; set; }
+        private Func<Employee, bool> Filter { get; set; }
+        private Func<EmployeeSalary, bool> ReportFilter { get; set; }
 
         public Form1()
         {
@@ -26,6 +28,43 @@ namespace DoNotBuyThisApp.Wizard
             btnDelete.Click += BtnDelete_Click;
             btnReports.Click += BtnReport1_Click;
             btnGen.Click += BtnGen_Click;
+            btnChangeTax.Click += BtnChangeTax_Click;
+            txtFilter.TextChanged += TxtFilter_TextChanged;
+
+            Filter = a => true;
+            ReportFilter = a => true;
+        }
+
+        private void BtnChangeTax_Click(object? sender, EventArgs e)
+        {
+            var form = new Form3();
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            if (!form.Success)
+            {
+                DisplayMessage(form.Error, Color.DarkRed);
+                return;
+            }
+
+            DisplayMessage("Impozit modificat cu succes", Color.DarkGreen);
+        }
+
+        private void TxtFilter_TextChanged(object? sender, EventArgs e)
+        {
+            var context = new ProjectContext();
+            if (string.IsNullOrWhiteSpace(txtFilter.Text))
+            {
+                Filter = a => true;
+                ReportFilter = a => true;
+            } else
+            {
+                Filter = a => $"{a.FirstName} {a.LastName}".ToLower().Contains(txtFilter.Text.ToLower());
+                ReportFilter = a => $"{a.FirstName} {a.LastName}".ToLower().Contains(txtFilter.Text.ToLower());
+            }
+            listEmployees.DataSource = context.Employees.Where(Filter).ToList();
         }
 
         private void BtnGen_Click(object? sender, EventArgs e)
@@ -37,7 +76,7 @@ namespace DoNotBuyThisApp.Wizard
 
         private void BtnReport1_Click(object? sender, EventArgs e)
         {
-            var reportForm = new Form2();
+            var reportForm = new Form2(ReportFilter);
             reportForm.Show();
         }
 
@@ -112,5 +151,10 @@ namespace DoNotBuyThisApp.Wizard
             textInfo.ForeColor = color;
             textInfo.Text = message;
         }
+
+        private bool CheckPassword(ProjectContext context, string password)
+            => context.Constants.Any(a => a.Name == "Password" && a.LiteralValue == password);
+        private bool AnyPassword(ProjectContext context)
+            => context.Constants.Any(a => a.Name == "Password");
     }
 }

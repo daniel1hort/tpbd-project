@@ -11,16 +11,16 @@ Post-Deployment Script Template
 */
 
 IF NOT EXISTS(SELECT * FROM [dbo].[Constant] WHERE [Id] = 1)
-    INSERT INTO [dbo].[Constant]([Id], [Name], [Value])
-    VALUES(1, 'Tax', 0.1);
+    INSERT INTO [dbo].[Constant]([Id], [Name], [NumericValue], [ValueType])
+    VALUES(1, 'Tax', 0.1, 0);
 GO
 
 IF NOT EXISTS(SELECT * FROM [dbo].[Constant] WHERE [Id] = 2)
-    INSERT INTO [dbo].[Constant]([Id], [Name], [Value])
-    VALUES(2, 'CAS', 0.25);
+    INSERT INTO [dbo].[Constant]([Id], [Name], [NumericValue], [ValueType])
+    VALUES(2, 'CAS', 0.25, 0);
 GO
 
 IF NOT EXISTS(SELECT * FROM [dbo].[Constant] WHERE [Id] = 3)
-    INSERT INTO [dbo].[Constant]([Id], [Name], [Value])
-    VALUES(3, 'CASS', 0.1);
+    INSERT INTO [dbo].[Constant]([Id], [Name], [NumericValue], [ValueType])
+    VALUES(3, 'CASS', 0.1, 0);
 GO

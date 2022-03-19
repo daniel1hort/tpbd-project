@@ -40,7 +40,14 @@ namespace DoNotBuyThisApp.Data
             {
                 entity.ToTable("Constant");
 
+                entity.HasIndex(e => e.Name, "UQ__Constant__737584F6286606C2")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.LiteralValue)
+                    .HasMaxLength(256)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -91,11 +98,11 @@ namespace DoNotBuyThisApp.Data
 
                 entity.Property(e => e.BonusGrossSalary).HasColumnType("money");
 
-                entity.Property(e => e.Cas)
+                entity.Property(e => e.CAS)
                     .HasColumnType("money")
                     .HasColumnName("CAS");
 
-                entity.Property(e => e.Cass)
+                entity.Property(e => e.CASS)
                     .HasColumnType("money")
                     .HasColumnName("CASS");
 

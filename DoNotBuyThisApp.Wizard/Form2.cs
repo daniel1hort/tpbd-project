@@ -1,4 +1,5 @@
 ﻿using DoNotBuyThisApp.Data;
+using DoNotBuyThisApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Reporting.WinForms;
 using System;
@@ -19,8 +20,9 @@ namespace DoNotBuyThisApp.Wizard
         private IEnumerable<string> ReportTypes => new string[] { "Stat de plata", "Fluturasi" };
         private ReportViewer reportViewer;
         private DateTime month;
+        private Func<EmployeeSalary, bool> Filter { get; set; }
 
-        public Form2()
+        public Form2(Func<EmployeeSalary, bool> filter)
         {
             InitializeComponent();
 
@@ -35,6 +37,8 @@ namespace DoNotBuyThisApp.Wizard
 
             btnEnter.Select();
             btnEnter.Click += BtnEnter_Click;
+
+            Filter = filter;
         }
 
         private void BtnEnter_Click(object? sender, EventArgs e)
@@ -54,7 +58,8 @@ namespace DoNotBuyThisApp.Wizard
 
             var context = new ProjectContext();
             var data = context.EmployeeSalaries
-                .Where(a => a.ForMonth.Year == month.Year && a.ForMonth.Month == month.Month);
+                .Where(a => a.ForMonth.Year == month.Year && a.ForMonth.Month == month.Month)
+                .Where(Filter);
 
             reportViewer.LocalReport.LoadReportDefinition(stream);
             reportViewer.LocalReport.DataSources

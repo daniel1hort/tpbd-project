@@ -21,8 +21,8 @@ namespace DoNotBuyThisApp.Data.Models
         public decimal TotalGrossSalary { get; set; }
         public decimal TotalTaxableSalary { get; set; }
         public decimal Tax { get; set; }
-        public decimal Cas { get; set; }
-        public decimal Cass { get; set; }
+        public decimal CAS { get; set; }
+        public decimal CASS { get; set; }
         public decimal NetSalary { get; set; }
     }
 }

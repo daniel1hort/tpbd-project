@@ -25,9 +25,9 @@ AS
 		SELECT
 			[Id],
 			CAST([GrossSalary] AS FLOAT) * [PayRise] + CAST([BonusGrossSalary] AS FLOAT) AS [TotalGrossSalary],
-			(SELECT [Value] FROM [Constant] WHERE [Id] = 1) AS [Tax],
-			(SELECT [Value] FROM [Constant] WHERE [Id] = 2) AS [CAS],
-			(SELECT [Value] FROM [Constant] WHERE [Id] = 3) AS [CASS]
+			(SELECT [NumericValue] FROM [Constant] WHERE [Id] = 1) AS [Tax],
+			(SELECT [NumericValue] FROM [Constant] WHERE [Id] = 2) AS [CAS],
+			(SELECT [NumericValue] FROM [Constant] WHERE [Id] = 3) AS [CASS]
 		FROM
 			[dbo].[Employee]
 		WHERE

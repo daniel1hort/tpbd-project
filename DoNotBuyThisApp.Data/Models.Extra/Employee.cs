@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoNotBuyThisApp.Data.Models
 {
@@ -48,39 +42,6 @@ namespace DoNotBuyThisApp.Data.Models
                 true => (true, null),
                 _ => (false, result)
             };
-        }
-
-        [NotMapped]
-        [Category("Informatii salariale")]
-        [DisplayName("Spor"), Description("Marire de salar")]
-        public int PayRiseDisplay { get => (int)Math.Ceiling(((decimal)PayRise - 1.0M) * 100.0M); set => PayRise = value / 100.0 + 1.0; }
-
-        [NotMapped]
-        [ReadOnly(true)]
-        [Category("Informatii salariale")]
-        [DisplayName("Total salar brut"), Description("Salar brut dupa aplicarea maririi de salar, adaugarea premiilor si scaderea retinerilor")]
-        public decimal? TotalGrossSalary { get => GrossSalary * (decimal)PayRise + BonusGrossSalary - Deductions; }
-
-        [NotMapped]
-        [Category("Informatii personale")]
-        [DisplayName("Imagine de profil"), Description("O poza care care sa fie afisata la profilul angajatului")]
-        public Image PictureDisplay
-        {
-            get
-            {
-                if (Picture is null) return null;
-                var stream = new MemoryStream(Picture);
-                stream.Position = 0;
-                return Image.FromStream(stream);
-            }
-            set
-            {
-                if (value is null) Picture = null;
-                var stream = new MemoryStream();
-                value.Save(stream, ImageFormat.Png);
-                stream.Position = 0;
-                Picture = stream.ToArray();
-            }
         }
     }
 }

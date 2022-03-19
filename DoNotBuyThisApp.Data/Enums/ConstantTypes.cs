@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoNotBuyThisApp.Data.Models
+namespace DoNotBuyThisApp.Data.Enums
 {
-    public partial class Constant
+    public enum ConstantTypes
     {
+        Numeric,
+        Literal
     }
 }

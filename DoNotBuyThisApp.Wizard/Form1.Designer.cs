@@ -39,6 +39,9 @@ namespace DoNotBuyThisApp.Wizard
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnGen = new System.Windows.Forms.Button();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnChangeTax = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,13 +51,14 @@ namespace DoNotBuyThisApp.Wizard
             this.listEmployees.ItemHeight = 20;
             this.listEmployees.Location = new System.Drawing.Point(12, 12);
             this.listEmployees.Name = "listEmployees";
-            this.listEmployees.Size = new System.Drawing.Size(405, 684);
+            this.listEmployees.Size = new System.Drawing.Size(405, 624);
             this.listEmployees.TabIndex = 0;
             // 
             // propertyGrid1
             // 
             this.propertyGrid1.Location = new System.Drawing.Point(423, 12);
             this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.Categorized;
             this.propertyGrid1.Size = new System.Drawing.Size(474, 447);
             this.propertyGrid1.TabIndex = 1;
             // 
@@ -124,11 +128,39 @@ namespace DoNotBuyThisApp.Wizard
             this.btnGen.Text = "Genereaza salarii";
             this.btnGen.UseVisualStyleBackColor = true;
             // 
+            // txtFilter
+            // 
+            this.txtFilter.Location = new System.Drawing.Point(12, 665);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(405, 27);
+            this.txtFilter.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 642);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(233, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Filtreaza dupa nume sau prenume";
+            // 
+            // btnChangeTax
+            // 
+            this.btnChangeTax.Location = new System.Drawing.Point(903, 365);
+            this.btnChangeTax.Name = "btnChangeTax";
+            this.btnChangeTax.Size = new System.Drawing.Size(327, 50);
+            this.btnChangeTax.TabIndex = 11;
+            this.btnChangeTax.Text = "Schimba impozitul";
+            this.btnChangeTax.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1242, 704);
+            this.Controls.Add(this.btnChangeTax);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.btnGen);
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnDelete);
@@ -158,5 +190,8 @@ namespace DoNotBuyThisApp.Wizard
         private Button btnDelete;
         private Button btnReports;
         private Button btnGen;
+        private TextBox txtFilter;
+        private Label label1;
+        private Button btnChangeTax;
     }
 }
