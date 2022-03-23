@@ -24,3 +24,8 @@ IF NOT EXISTS(SELECT * FROM [dbo].[Constant] WHERE [Id] = 3)
     INSERT INTO [dbo].[Constant]([Id], [Name], [NumericValue], [ValueType])
     VALUES(3, 'CASS', 0.1, 0);
 GO
+
+IF NOT EXISTS(SELECT * FROM [dbo].[Constant] WHERE [Id] = 4)
+    INSERT INTO [dbo].[Constant]([Id], [Name], [LiteralValue], [ValueType])
+    VALUES(3, 'Password', 'Admin0099', 1);
+GO

@@ -11,41 +11,39 @@ using System.Windows.Forms;
 
 namespace DoNotBuyThisApp.Wizard
 {
-    public partial class Form3 : Form
+    public partial class Form4 : Form
     {
         public string Error { get; set; }
         public bool Success { get; set; }
 
-        public Form3()
+        public Form4()
         {
             InitializeComponent();
 
-            var context = new ProjectContext();
-            var tax = context.Constants.FirstOrDefault(a => a.Name == "Tax")?.NumericValue;
-            int tax100 = (int)(tax * 100.0f);
-
-            numOldTax.Value = tax100;
             btnSave.Click += BtnSave_Click;
         }
 
         private void BtnSave_Click(object? sender, EventArgs e)
         {
-            var newTax = numNewTax.Value;
-            var inputPass = txtPass.Text;
-
             var context = new ProjectContext();
-            var pass = context.Constants.FirstOrDefault(a => a.Name == "Password")?.LiteralValue;
-
-            if(pass != inputPass)
+            var pass = context.Constants.FirstOrDefault(a => a.Name == "Password");
+            var oldPass = txtOldPass.Text;
+            var newPass = txtNewPass.Text;
+            if (pass is not null and not null and not null and not null && pass.LiteralValue != oldPass)
             {
-                Error = "Parola introdusa este gresita";
                 Success = false;
+                Error = "Parola introdusa nu coincide cu parola curenta.";
                 return;
             }
 
-            var tax = context.Constants.FirstOrDefault(a => a.Name == "Tax");
-            tax.NumericValue = (double)newTax / 100.0;
-            context.Constants.Update(tax);
+            pass ??= new Data.Models.Constant()
+            {
+                Id = 4,
+                Name = "Password",
+                Type = Data.Enums.ConstantTypes.Literal,
+            };
+            pass.LiteralValue = newPass;
+            context.Constants.Update(pass);
             context.SaveChanges();
             Success = true;
         }

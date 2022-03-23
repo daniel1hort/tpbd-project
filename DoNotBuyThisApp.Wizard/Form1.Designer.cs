@@ -42,6 +42,7 @@ namespace DoNotBuyThisApp.Wizard
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnChangeTax = new System.Windows.Forms.Button();
+            this.btnChangePass = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,11 +154,21 @@ namespace DoNotBuyThisApp.Wizard
             this.btnChangeTax.Text = "Schimba impozitul";
             this.btnChangeTax.UseVisualStyleBackColor = true;
             // 
+            // btnChangePass
+            // 
+            this.btnChangePass.Location = new System.Drawing.Point(903, 421);
+            this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Size = new System.Drawing.Size(327, 50);
+            this.btnChangePass.TabIndex = 12;
+            this.btnChangePass.Text = "Schimba parola";
+            this.btnChangePass.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1242, 704);
+            this.Controls.Add(this.btnChangePass);
             this.Controls.Add(this.btnChangeTax);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFilter);
@@ -193,5 +204,6 @@ namespace DoNotBuyThisApp.Wizard
         private TextBox txtFilter;
         private Label label1;
         private Button btnChangeTax;
+        private Button btnChangePass;
     }
 }

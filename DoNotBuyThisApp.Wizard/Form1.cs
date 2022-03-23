@@ -29,10 +29,28 @@ namespace DoNotBuyThisApp.Wizard
             btnReports.Click += BtnReport1_Click;
             btnGen.Click += BtnGen_Click;
             btnChangeTax.Click += BtnChangeTax_Click;
+            btnChangePass.Click += BtnChangePass_Click;
             txtFilter.TextChanged += TxtFilter_TextChanged;
 
             Filter = a => true;
             ReportFilter = a => true;
+        }
+
+        private void BtnChangePass_Click(object? sender, EventArgs e)
+        {
+            var form = new Form4();
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            if (!form.Success)
+            {
+                DisplayMessage(form.Error, Color.DarkRed);
+                return;
+            }
+
+            DisplayMessage("Parola modificata cu succes", Color.DarkGreen);
         }
 
         private void BtnChangeTax_Click(object? sender, EventArgs e)

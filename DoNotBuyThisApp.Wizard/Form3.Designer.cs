@@ -130,7 +130,7 @@
             this.Controls.Add(this.numOldTax);
             this.Controls.Add(this.label1);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Schimba impozit";
             ((System.ComponentModel.ISupportInitialize)(this.numOldTax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNewTax)).EndInit();
             this.ResumeLayout(false);
